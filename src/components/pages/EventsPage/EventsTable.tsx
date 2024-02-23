@@ -15,8 +15,8 @@ export const EventsTable: FC = () => {
 
     const {
         variables,
-        serverSideOptions,
-        setServerSideOptions,
+        storedOptions: serverSideOptions,
+        setStoredOptions: setServerSideOptions,
     } = useAlexPageState({
         varsBehaviorMap: varsBehaviourMapEvents,
         defaultValue: new Map([

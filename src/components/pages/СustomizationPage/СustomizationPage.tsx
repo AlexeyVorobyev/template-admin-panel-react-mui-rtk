@@ -2,12 +2,12 @@ import { FC, ReactNode, useCallback, useMemo, useState } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { Box, Button, Divider, Stack, Typography } from '@mui/material'
 import { theme } from '../../theme/theme'
-import { LinkRouterWrapper } from '../../../../../shared-react-components/LinkRouterWrapper/LinkRouterWrapper'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
-import { AlexDialogButton } from '../../../../../shared-react-components/AlexDialog/AlexDialogButton'
+import { AlexDialogButton } from '../../../shared-react-components/AlexDialog/AlexDialogButton'
 import { FormProvider, useForm } from 'react-hook-form'
 import { ThunkAction } from '@reduxjs/toolkit'
 import { useAppDispatch } from '../../../core/redux/store/store.ts'
+import { AlexLink } from '../../../shared-react-components/AlexLink/AlexLink.tsx'
 
 export enum EPageType {
     edit = 'edit',
@@ -73,12 +73,12 @@ export const CustomizationPage: FC<ICustomizationPageProps> = ({ config }) => {
                 return (<>
                     <Stack direction={'row'} spacing={theme.spacing(2)} padding={theme.spacing(2)}
                            justifyContent={'flex-end'} useFlexGap>
-                        <LinkRouterWrapper to={-1} useNavigateProp sx={{ marginRight: 'auto' }}>
+                        <AlexLink to={-1} useNavigateProp sx={{ marginRight: 'auto' }}>
                             <Button variant={'contained'} startIcon={<KeyboardReturnIcon/>}>
                                 <Typography
                                     variant={'button'}>Назад</Typography>
                             </Button>
-                        </LinkRouterWrapper>
+                        </AlexLink>
                         {deleteQueryDecorated! && (
                             <AlexDialogButton
                                 button={
@@ -121,12 +121,12 @@ export const CustomizationPage: FC<ICustomizationPageProps> = ({ config }) => {
                                     },
                                 }}/>)}
                         {config.get(namespace)![EPageType.edit] && (
-                            <LinkRouterWrapper to={`./../edit?id=${searchParams.get('id')}`}>
+                            <AlexLink to={`./../edit?id=${searchParams.get('id')}`}>
                                 <Button variant={'contained'}>
                                     <Typography
                                         variant={'button'}>Редактировать {(config.get(namespace)!)[pageState].button}</Typography>
                                 </Button>
-                            </LinkRouterWrapper>
+                            </AlexLink>
                         )}
                     </Stack>
                 </>)
@@ -146,13 +146,13 @@ export const CustomizationPage: FC<ICustomizationPageProps> = ({ config }) => {
                                     {pageState === EPageType.edit ? 'Настройка' : 'Добавление'} {(config.get(namespace)!)[pageState]!.title}
                                 </Typography>
                                 <Stack direction={'row'} spacing={theme.spacing(2)} alignItems={'center'}>
-                                    <LinkRouterWrapper to={-1} useNavigateProp>
+                                    <AlexLink to={-1} useNavigateProp>
                                         <Button variant={'outlined'} color={'neutral'}>
                                             <Typography
                                                 color={theme.palette.neutral.notContrastText}
                                                 variant={'button'}>Отмена</Typography>
                                         </Button>
-                                    </LinkRouterWrapper>
+                                    </AlexLink>
                                     {onSubmitFunc.callback && (
                                         <Button variant={'contained'} type={'submit'}
                                                 onClick={methods.handleSubmit(onSubmitFunc.callback)}>
@@ -177,14 +177,14 @@ export const CustomizationPage: FC<ICustomizationPageProps> = ({ config }) => {
                         <Typography
                             variant={'h6'}>Настройка {(config.get(namespace)!)[pageState].title}</Typography>
                         {config.get(namespace)![EPageType.add] && (
-                            <LinkRouterWrapper
+                            <AlexLink
                                 to={`./../add?${(new URLSearchParams([['from', JSON.stringify(location.pathname + location.search)]])).toString()}`}>
                                 <Button variant={'contained'}>
                                     <Typography variant={'button'}>
                                         Добавить {(config.get(namespace)!)[pageState].button}
                                     </Typography>
                                 </Button>
-                            </LinkRouterWrapper>
+                            </AlexLink>
                         )}
                     </Stack>
                 </>)

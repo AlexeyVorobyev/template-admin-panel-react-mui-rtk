@@ -2,9 +2,9 @@ import React, { FC, useLayoutEffect } from 'react'
 import { Box, CircularProgress, Grid, Stack, Typography } from '@mui/material'
 import { useFormContext } from 'react-hook-form'
 import { theme } from '../../theme/theme'
-import { AlexInputControlled } from '../../../../../shared-react-components/formUtils/AlexInput/AlexInputControlled.tsx'
+import { AlexInputControlled } from '../../../shared-react-components/formUtils/AlexInput/AlexInputControlled.tsx'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { extractIds } from '../../../../../shared-react-components/functions/extractIds'
+import { extractIds } from '../../../shared-react-components/functions/extractIds'
 import {
     AlexDatePickerControlled,
 } from '../../../shared-react-components/formUtils/AlexDatePicker/AlexDatePickerControlled.tsx'
@@ -12,8 +12,8 @@ import {
     AlexCheckBoxControlled,
 } from '../../../shared-react-components/formUtils/AlexCheckBox/AlexCheckBoxControlled.tsx'
 import { useEventPatchMutation, useEventPostMutation, useLazyEventQuery } from '../../../core/redux/api/events.api.ts'
-import { EDatePickerType } from '../../../shared-react-components/formUtils/AlexDatePicker/AlexDatePicker.tsx'
 import { TEventPatch, TEventPost } from '../../../core/redux/api/types/events.ts'
+import { EDatePickerType } from '../../../shared-react-components/formUtils/AlexDatePicker/AlexDatePicker.tsx'
 
 interface IProps {
     setOnSubmitFunc: React.Dispatch<React.SetStateAction<{ callback: ((data: any) => void) | null }>>

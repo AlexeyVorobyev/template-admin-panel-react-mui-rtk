@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getTokensAndExpiry } from './authTokenAndExpiry.ts'
-import { RootState } from '@reduxjs/toolkit/query'
+import { RootState } from '../../core/redux/store/store.ts'
 
 export const useLoginStatus = () => {
     const checkStatus = useCallback(() => {
